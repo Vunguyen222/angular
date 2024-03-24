@@ -1,0 +1,33 @@
+/* .Fileicon{
+
+} */
+
+.container{
+    display: flex;
+    align-items: center;
+    /* margin-bottom : 10px;  */
+    padding: 0;
+}
+
+
+.Fileicon{
+    flex : 1;
+    border : 2px solid black;
+    text-align: center;
+    align-items: center;
+    font-size: xx-large;
+    color : red; 
+    padding: 5px;
+}
+
+.Filename{
+    flex : 5; 
+    border: 2px solid black;
+}
+
+.Filesize{
+    flex : 3; 
+    border: 2px solid black;
+    text-align: center;
+    align-items: center;
+}
