@@ -9,3 +9,8 @@
 .ui-fileupload .ui-button {
   border-radius: 2px;
 }
+
+/* .ui-fileupload .ui-fileupload-content{
+  max-height: 200px;
+  overflow-y: scroll;
+} */

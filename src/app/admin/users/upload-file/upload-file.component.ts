@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FileUpload } from 'primeng/fileupload';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @Component({
   selector: 'app-upload-file',
@@ -12,8 +13,15 @@ export class UploadFileComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // @ViewChild()
+
+
   uploadUrl: string;
+
+  // restore file that be uploaded
   uploadedFiles: any[] = [];
+
+  // icon pdf and word
   iconList = ["far fa-file-pdf", "far fa-file-word"]
 
   getIcon(filename: any): string {
@@ -26,19 +34,37 @@ export class UploadFileComponent implements OnInit {
     }
   }
 
+  getSize(filesize: number): string {
+    const Kb: number = 1000;
+    const Mb: number = 1000 * Kb;
+
+    if (filesize < Kb) {
+      return filesize + " Bytes"
+    }
+    else if (filesize >= Kb && filesize < Mb) {
+      return (filesize / Kb).toFixed(3) + " KB"
+    }
+    else {
+      return (filesize / Mb).toFixed(3) + " MB"
+    }
+  }
+
+
   onUpload(event: any): void {
     for (const file of event.files) {
       this.uploadedFiles.push(file);
     }
   }
 
+
+  // event of p-fileUpload
   onSelect(event: any) : void {
     for(const file of event.files) {
       this.uploadedFiles.push(file);
     }
   }
 
-  onRemove(event: any): void {
+  onRemove(event: any, uploader : FileUpload): void {
     this.uploadedFiles.splice(event.file.index, 1);
   }
 
